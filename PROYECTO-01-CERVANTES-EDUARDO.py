@@ -38,7 +38,7 @@ while (estado == False and intentos <intentos_permitidos):    #Función de bucle
     if username_input == usuario and password_input == contrasena:
         estado = True
     elif username_input != usuario:
-        print(negrita+'Usurio NO encontrado'+clr_reset)
+        print(negrita+'Usuario NO encontrado'+clr_reset)
         estado =False
     elif username_input == usuario and password_input != contrasena:
         print(negrita+'La contraseña es incorrecta'+clr_reset)
