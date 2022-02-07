@@ -1,6 +1,7 @@
 from lifestore_file import lifestore_searches, lifestore_sales, lifestore_products
 import collections
 from colorama import Style, Back, Fore
+import getpass
 
 usuario = 'jimmy'           #Especifique el usuario
 contrasena =  'ymmij'       #Especifique la contraseña
@@ -29,6 +30,9 @@ while (estado == False and intentos <intentos_permitidos):    #Función de bucle
     print('\n Número de intentos disponibles:', (intentos_permitidos-intentos), '\n')
     username_input = input(colorin + negrita + 'Ingrese usuario:'+clr_reset)
     password_input = input(colorin + negrita +'Ingrese contraseña:'+clr_reset)
+    #Descomentar la linea inferior y comentar la linea anterior en caso de que no desee que se muestre en consola cuando se teclee la contraseña
+    #password_input = getpass.getpass(colorin + negrita +'Ingrese contraseña:'+clr_reset)
+    
     intentos = intentos +1 
     
     if username_input == usuario and password_input == contrasena:
@@ -45,6 +49,7 @@ while (estado == False and intentos <intentos_permitidos):    #Función de bucle
 if estado == True:      #Función en caso de acreditar el inicio de sesión
 
     print('Bienvenido de nuevo'+ clr_username,  usuario + clr_reset +', selecciona la opción que deseas visualizar:' +'''
+\n
   1) Productos más vendidos y productos rezagados.
   2) Productos por reseña en el servicio.
   3) Total de ingresos
@@ -55,6 +60,7 @@ if estado == True:      #Función en caso de acreditar el inicio de sesión
     if seleccion == '1':    #Productos más vendidos y productos rezagados
         print(
 'Opción seleccionada:' + clr_tit +" Productos más vendidos y productos rezagados."+clr_reset+'''
+\n
   1) Producto más vendido.
   2) Top 5 de Productos más vendidos.
   3) Top 5 de Productos menos vendidos.
@@ -73,7 +79,7 @@ if estado == True:      #Función en caso de acreditar el inicio de sesión
                 prod_compr[i] = int(prod_compr[i])
             for val in lifestore_sales:
                 prod_compr.append(val[1])  
-            print(*lifestore_products[mode(prod_compr) -1][1][:20]) 
+            print(lifestore_products[mode(prod_compr) -1][1]) 
 
         elif seleccion =='2': # 5 Productos más vendidos
             print(clr_sub+' 5 Productos más vendidos: \n'+ clr_reset)
@@ -92,12 +98,12 @@ if estado == True:      #Función en caso de acreditar el inicio de sesión
             tercero = (collections.Counter(repeticiones).most_common()[2][0])-1
             cuarto = (collections.Counter(repeticiones).most_common()[3][0])-1
             quinto = (collections.Counter(repeticiones).most_common()[4][0])-1
-            print(
-             *lifestore_products[primero][1][:20],'\n',
-            *lifestore_products[segundo][1][:20],'\n',
-            *lifestore_products[tercero][1][:20],'\n',
-            *lifestore_products[cuarto][1][:20],'\n',
-            *lifestore_products[quinto][1][:20],'\n'
+            print('\n',
+lifestore_products[primero][1],'\n',
+lifestore_products[segundo][1],'\n',
+lifestore_products[tercero][1],'\n',
+lifestore_products[cuarto][1],'\n',
+lifestore_products[quinto][1],'\n',
             )
     
         elif seleccion =='3': # 5 Productos menos vendidos
@@ -117,12 +123,12 @@ if estado == True:      #Función en caso de acreditar el inicio de sesión
             tercero1 = collections.Counter(repeticiones).most_common()[-3][0]-1
             cuarto1 = collections.Counter(repeticiones).most_common()[-4][0]-1
             quinto1 = collections.Counter(repeticiones).most_common()[-5][0]-1
-            print(
-            *lifestore_products[primero1][1][:20],'\n',
-            *lifestore_products[segundo1][1][:20],'\n',
-            *lifestore_products[tercero1][1][:20],'\n',
-            *lifestore_products[cuarto1][1][:20],'\n',
-            *lifestore_products[quinto1][1][:20],'\n'
+            print('\n',
+lifestore_products[primero1][1],'\n',
+lifestore_products[segundo1][1],'\n',
+lifestore_products[tercero1][1],'\n',
+lifestore_products[cuarto1][1],'\n',
+lifestore_products[quinto1][1],'\n'
             )
                            
         elif seleccion =='4': #10 Productos más buscados
@@ -147,17 +153,17 @@ if estado == True:      #Función en caso de acreditar el inicio de sesión
             octavo = (collections.Counter(repeticiones).most_common()[7][0])-1
             noveno = (collections.Counter(repeticiones).most_common()[8][0])-1
             decimo = (collections.Counter(repeticiones).most_common()[9][0])-1
-            print(
-            *lifestore_products[primero][1][:20],'\n',
-            *lifestore_products[segundo][1][:20],'\n',
-            *lifestore_products[tercero][1][:20],'\n',
-            *lifestore_products[cuarto][1][:20],'\n',
-            *lifestore_products[quinto][1][:20],'\n',
-            *lifestore_products[sexto][1][:20],'\n',
-            *lifestore_products[septimo][1][:20],'\n',
-            *lifestore_products[octavo][1][:20],'\n',
-            *lifestore_products[noveno][1][:20],'\n',
-            *lifestore_products[decimo][1][:20],'\n'
+            print('\n',
+lifestore_products[primero][1],'\n',
+lifestore_products[segundo][1],'\n',
+lifestore_products[tercero][1],'\n',
+lifestore_products[cuarto][1],'\n',
+lifestore_products[quinto][1],'\n',
+lifestore_products[sexto][1],'\n',
+lifestore_products[septimo][1],'\n',
+lifestore_products[octavo][1],'\n',
+lifestore_products[noveno][1],'\n',
+lifestore_products[decimo][1],'\n'
             )
         
         elif seleccion =='5': #10 Productos menos buscados
@@ -182,17 +188,17 @@ if estado == True:      #Función en caso de acreditar el inicio de sesión
             octavo = (collections.Counter(repeticiones).most_common()[-8][0])-1
             noveno = (collections.Counter(repeticiones).most_common()[-9][0])-1
             decimo = (collections.Counter(repeticiones).most_common()[-10][0])-1
-            print(
-            *lifestore_products[primero][1][:20],'\n',
-            *lifestore_products[segundo][1][:20],'\n',
-            *lifestore_products[tercero][1][:20],'\n',
-            *lifestore_products[cuarto][1][:20],'\n',
-            *lifestore_products[quinto][1][:20],'\n',
-            *lifestore_products[sexto][1][:20],'\n',
-            *lifestore_products[septimo][1][:20],'\n',
-            *lifestore_products[octavo][1][:20],'\n',
-            *lifestore_products[noveno][1][:20],'\n',
-            *lifestore_products[decimo][1][:20],'\n'
+            print('\n',
+lifestore_products[primero][1],'\n',
+lifestore_products[segundo][1],'\n',
+lifestore_products[tercero][1],'\n',
+lifestore_products[cuarto][1],'\n',
+lifestore_products[quinto][1],'\n',
+lifestore_products[sexto][1],'\n',
+lifestore_products[septimo][1],'\n',
+lifestore_products[octavo][1],'\n',
+lifestore_products[noveno][1],'\n',
+lifestore_products[decimo][1],'\n'
             )
           
         else:
@@ -200,7 +206,7 @@ if estado == True:      #Función en caso de acreditar el inicio de sesión
     
     elif seleccion == '2':  #Productos por reseña en el servicio
         print( 
-'Opción seleccionada:'+ clr_tit + "Productos por reseña en el servicio."+ clr_reset +'''
+'Opción seleccionada:'+ clr_tit + "Productos por reseña en el servicio."+ clr_reset +'''\n
   1) Top 5 con mejores reseñas
   2) Top 5 con las peores reseñas
 ''')
@@ -237,11 +243,11 @@ if estado == True:      #Función en caso de acreditar el inicio de sesión
             quinto = (collections.Counter(repeticiones).most_common()[4][0])
 
 
-            print(*lifestore_products[(primero[0])-1][1][:20],'\n',
-                *lifestore_products[(segundo[0])-1][1][:20],'\n',
-                *lifestore_products[(tercero[0])-1][1][:20],'\n',
-                *lifestore_products[(cuarto[0])-1][1][:20],'\n',
-                *lifestore_products[(quinto[0])-1][1][:20],'\n',
+            print(lifestore_products[(primero[0])-1][1],'\n',
+                lifestore_products[(segundo[0])-1][1],'\n',
+                lifestore_products[(tercero[0])-1][1],'\n',
+                lifestore_products[(cuarto[0])-1][1],'\n',
+                lifestore_products[(quinto[0])-1][1],'\n',
                 )
       
         elif seleccion =='2': #Productos con peores
@@ -276,11 +282,12 @@ if estado == True:      #Función en caso de acreditar el inicio de sesión
             quinto = (collections.Counter(repeticiones).most_common()[-5][0])
 
 
-            print(*lifestore_products[(primero[0])-1][1][:20],'\n',
-                *lifestore_products[(segundo[0])-1][1][:20],'\n',
-                *lifestore_products[(tercero[0])-1][1][:20],'\n',
-                *lifestore_products[(cuarto[0])-1][1][:20],'\n',
-                *lifestore_products[(quinto[0])-1][1][:20],'\n',
+            print('\n',
+lifestore_products[(primero[0])-1][1],'\n',
+lifestore_products[(segundo[0])-1][1],'\n',
+lifestore_products[(tercero[0])-1][1],'\n',
+lifestore_products[(cuarto[0])-1][1],'\n',
+lifestore_products[(quinto[0])-1][1],'\n',
                 )
             
         
@@ -342,5 +349,4 @@ if estado == True:      #Función en caso de acreditar el inicio de sesión
         print('La función', seleccion ,  'NO es válida') 
 
 else:   #Mensaje en pantalla al exceder 3 intentos de incio de sesión
-  print(backneg + fneg + 'Intentos de acceso excedidos'+clr_reset)
-  
+  print(backneg + fneg + 'Intentos de acceso excedidos'+clr_reset)  
