@@ -33,8 +33,6 @@ def continuar(): #Funcion para detener el ciclo del programa
     elif teclado == 'n':
         print('Fue un placer ayudarle hoy ;)')
         exit()
-def test(): #Fundion de prueba pendiente por borrar
-    print('Prueba acreditada')
 def rfe(): #Fucion Rutas con mayor flujo en exportaciones
     exportaciones = archivo[archivo['direction'] =='Exports']
     rutas = exportaciones.groupby(['origin','destination'])
@@ -116,12 +114,10 @@ Pulse la tecla (s) para salir del programa.
         seleccion = input('Seleccione la opción que desea visualizar: ')
         if seleccion == '1':
             rfe()
-            test()
             continuar()
             
         elif seleccion == '2':
             rfi()
-            test()
             continuar()
         else:
             novalida()
@@ -145,11 +141,9 @@ Pulse la tecla (s) para salir del programa.
         seleccion = input('Seleccione la opción que desea visualizar: ')
         if seleccion == '1':
             pgg_exp()
-            test()
             continuar()
         elif seleccion == '2':
             pgg_imp()
-            test()
             continuar()
         else:
             novalida()
